@@ -1,0 +1,72 @@
+
+<head>
+        <title>Comment</title>
+
+</head>
+    <link rel="stylesheet" href="/static/css/base.css">
+<body class="center bg2 max">
+
+<div id="main">
+<h1 class="tab blink" style="color:#0074AA;">Welcome to the SOTI CTF!</h1>
+
+<div id="home">
+<h4><a href="/">Home</a> <span class="line">|</span>
+
+{% if 'logged' in session %}
+<a href="{{ url_for('admin') }}">Admin Page</a> <span class="line">|</span>
+
+    <a href="/logout">Logout</a><span class="line">|</span>
+
+{%else%}
+    <a href="/login">Login</a><span class="line">|</span>
+{%endif %}
+</h4>
+
+
+</h4>
+</div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+
+
+                 {% for category, message in messages %}
+                        <div class="{{ category }}">{{ message }}</div>
+
+                 {% endfor %}
+                {% endif %}
+            {% endwith %}
+    <!-- Search form -->
+    <form method="GET">
+      <input type="text" name="q"
+             placeholder="Search query" autocomplete="off" /><br>
+      <input type="submit" value="Search" />
+
+    </form>
+
+    <form action="/search" method="POST">
+      <input type="text" name="comment"
+             placeholder="Comment" autocomplete="off" /><br>
+      <input type="submit" value="Comment" />
+    </form>
+
+{% autoescape false %}
+    {% if not search_query %}
+      <h3>Showing all comments of {{ searchQuery }}:</h3>
+    {% endif %}
+{% endautoescape %}
+
+
+
+
+
+
+    {% for comment in res %}
+       <div>
+
+        <h3>"{{ comment }}"</h3>
+
+      </div>
+    {% endfor %}
+
+</div>
+</body>

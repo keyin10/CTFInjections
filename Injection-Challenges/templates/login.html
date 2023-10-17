@@ -1,0 +1,63 @@
+<head>
+        <title>Login Page</title>
+
+</head>
+    <link rel="stylesheet" href="/static/css/base.css">
+<body class="center bg2 max">
+
+
+<h1 class="tab blink" style="color:#0074AA;">Welcome to the SOTI CTF!</h1>
+<div id="home">
+<h4><a href="/">Home</a> <span class="line">|</span>
+<a href="/search">Leave some comments</a> <span class="line">|</span>
+{% if 'logged' in session %}
+<a href="{{ url_for('admin') }}">Admin Page</a> <span class="line">|</span>
+<a href="/logout">Logout</a><span class="line">|</span>
+
+{%else%}
+
+    <a href="/login">Login</a><span class="line">|</span>
+{%endif %}
+</h4>
+</div>
+
+
+
+
+</div>
+
+    <main class="form-signin">
+        <form action="/login" method="post">
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <img class="mb-4" src="/static/images/pc-90.svg" alt="" width="72" height="57">
+
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+
+
+                 {% for category, message in messages %}
+                        <div class="{{ category }}">{{ message }}</div>
+
+                 {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+
+                <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+
+        </div>
+
+        <button class="w-100 btn btn-lg btn-warning" type="submit">Sign in</button>
+
+</form>
+    </div>
+    </main>
+
+</body>

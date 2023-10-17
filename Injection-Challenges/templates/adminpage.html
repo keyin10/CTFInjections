@@ -1,0 +1,35 @@
+<head>
+        <title>Admin Config</title>
+
+</head>
+    <link rel="stylesheet" href="/static/css/base.css">
+<body class="center bg2 max">
+
+<div id="main">
+<h1 class="tab blink" style="color:#0074AA;">Welcome to the SOTI CTF!</h1>
+<div id="home">
+<h4><a href="/">Home</a> <span class="line">|</span>
+<a href="/search">Leave some comments</a> <span class="line">|</span>
+{% if 'logged' in session %}
+    <a href="{{ url_for('admin') }}">Admin Page</a> <span class="line">|</span>
+
+    <a href="/logout">Logout</a><span class="line">|</span>
+
+    <p>Welcome to the Admin Page</p>
+    <p>Challenge Coming Soon!</p>
+    
+ {%else%}
+
+    <a href="/login">Login</a><span class="line">|</span>
+    {%endif %}
+</h4>
+</div>
+
+
+
+</div>
+<footer id="footer">
+
+
+</footer>
+</body>

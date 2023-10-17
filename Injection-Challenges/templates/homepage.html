@@ -1,0 +1,34 @@
+<head>
+        <title>Home Page</title>
+
+</head>
+    <link rel="stylesheet" href="/static/css/base.css">
+<body class="center bg2 max">
+
+<div id="main">
+<h1 class="tab blink" style="color:#0074AA;">Welcome to the SOTI CTF!</h1>
+<div id="home">
+<h4><a href="/">Home</a> <span class="line">|</span>
+<a href="/search">Add a comment</a> <span class="line">|</span>
+{% if 'logged' in session %}
+<a href="{{ url_for('admin') }}">Admin Page</a> <span class="line">|</span>
+<a href="/logout">Logout</a><span class="line">|</span>
+
+{%else%}
+
+    <a href="/login">Login</a><span class="line">|</span>
+{%endif %}
+</h4>
+</div>
+
+<p>This is a fairly new website, but there will be lots of cool stuff to come!</p>
+<p>There is a page where you can send comments for us to see! There are absolutely no restrictions!</p>
+<p>The login page is for admins only!</p>
+
+
+</div>
+<footer id="footer">
+
+
+</footer>
+</body>
